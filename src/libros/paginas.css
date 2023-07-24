@@ -1,0 +1,133 @@
+/* PAGINA INICIO */ 
+
+
+
+#contenedor-carrusel {
+    width: 100%;
+    position: absolute;
+    right: -30%;
+    top:15%; /* 15% con el buscador*/
+}
+
+#primer-contenedor {
+    position: relative;
+    /*margin-top: -15%;*/
+    margin-left: -7%;
+    z-index: 1;
+    /*width: 120%;*/
+    border-radius: 10px;
+}
+
+#primer-contenedor * {
+    border-radius: 10px;
+}
+
+/* PAGINA SESIONES */
+
+#sesion-page * {
+    text-align: left;
+}
+
+#sesion-page .titulos {
+    text-align: center;
+}
+
+#sesion-page .titulos h4 {
+    color: #F04D60;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* PÁGINA LIBROS */
+
+.secciones-libros {
+    margin-top: 10%;
+}
+
+/* search bar */
+/*.box-container {
+    margin: 10px 0;
+}
+
+.box {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    line-height: 25px;
+    float: left;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.clearboth {
+    clear: both;
+}*/
+
+
+
+/*.container {    width: 30rem;    position: relative;}
+.textbox {
+    border: 1px solid #f3f3f3;
+    height: 2rem;    outline: none;    box-sizing: border-box;
+    padding: 1px 10px; transition: 0.2s ease-in-out; width: 100%;
+}*/
+/* We'll change the border color of the textbox as long as it is being focused */
+/*
+.textbox:focus {
+        border: 1px solid blue;
+    transition: 0.2s ease-in-out;
+}
+*/
+/* Styles of the suggestions container */
+/*
+.suggestions {
+
+    overflow-y: scroll;
+    border: 1px solid #f3f3f3;
+    background-color: white;
+    max-height: 20rem;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    z-index: 10;
+}
+*/
+/* Will hide the suggestions */
+/*.suggestions.hidden {
+
+    visibility: hidden; !* We can also use `opacity: 0`*!
+}*/
+/* Styling of a single suggestion */
+/*.suggestion {
+
+    cursor: pointer; box-sizing: border-box; padding: 1px 10px;
+    height: 2rem; display: flex; align-items: center;
+}*/
+/* Changing background color on hover */
+/*.suggestion:hover {
+
+    background-color: #f3f3f3;
+}*/
+
+/* PÁGINA USUARIOS */
+
+
+/* CARRITO */
+.cart {
+    height: 23px;
+    width: 23px;
+    border-radius: 100%;
+    background-color: #F04D60; /*rgb(252, 123, 36);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 2;
+    margin-left: 15px;
+    margin-top: -45px;
+    position: absolute;
+}
+.wishlist {
+    background-color: #F09960;
+}
+
