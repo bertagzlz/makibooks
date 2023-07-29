@@ -1,0 +1,71 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    #build:
+    #  context: .
+    #  dockerfile: nginx/Dockerfile
+    container_name: nginx
+    #image: php-nginx
+    ports:
+      - "80:80"
+    volumes:
+      # Asigne el dir host./conf.d al dir del contenedor /etc/nginx/conf.d
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      #- ./web:/var/www/html
+      #- ./app:/app
+    depends_on:
+      - app
+    networks:
+      - app_net
+  app:
+    build:
+      dockerfile: app/public/php/Dockerfile
+      #target: base
+    #image: php:7-fpm
+    ports:
+      - 9000
+    volumes:
+      #– aquí se colocará la carpeta de PHP, la imagen
+      - ./app:/app
+  # we have mounted the directory www/html to both
+  # our containers, nginx-container and php-container.
+  # However, this is not a proper way. we've finally create
+  # a separate data container to holds the data and linked
+  #it to all other containers.
+  # see https://www.atlantic.net/vps-hosting/how-to-deploy-a-php-application-with-nginx-and-mysql-using-docker-and-docker-compose/
+    networks:
+      - app_net
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql
+    container_name: mysqldb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=Ac640100jr
+      - MYSQL_USER=joserod
+      - MYSQL_PASSWORD=Ac640100jr
+      - MYSQL_DATABASE=makibooks
+    volumes:
+      #- ./database:/var/lib/mysql
+      - ./database/makibooks.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3307:3306
+    networks:
+      app_net:
+        # IP de subred fija, el segmento de red debe estar en la subred 10.10. *. *
+        ipv4_address: 10.10.10.1
+
+networks:
+    # Configurar la red de Docker
+    app_net:
+      driver: bridge
+      ipam:
+        config:
+          # Subred
+          - subnet: 10.10.0.0/16
+
+
+
+
